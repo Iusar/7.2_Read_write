@@ -2,23 +2,23 @@ import os
 from pathlib import Path
 from pprint import pprint
 
-#summary_file = open("Общий.txt", "w+")
-all_files = []
-files = ['1.txt','2.txt','3.txt']
 
+files = ['1.txt', '2.txt', '3.txt']
+
+#Определение количества строк и сортировка
 def sort_list(file_list):
     files_dict = {}
-    sorted_list = []
     for file in file_list:
         with open(file, "r", encoding="utf-8") as text_file:
             for line_index, line in enumerate(text_file):
                 pass
-        files_dict[line_index+1] = file
+        files_dict[line_index + 1] = file
 
     sorted_dict = sorted(files_dict.items())
 
     return sorted_dict
 
+#Создаем итоговый .txt
 def unite_files(file_list):
     with open("Общий.txt", 'a+') as summary_file:
         for file in file_list:
@@ -33,4 +33,5 @@ def unite_files(file_list):
 
     pass
 
+#Собственно программа
 unite_files(sort_list(files))
