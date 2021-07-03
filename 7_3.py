@@ -13,7 +13,7 @@ def sort_list(file_list):
         with open(file, "r", encoding="utf-8") as text_file:
             for line_index, line in enumerate(text_file):
                 pass
-        files_dict[line_index] = file
+        files_dict[line_index+1] = file
 
     sorted_dict = sorted(files_dict.items())
 
@@ -22,6 +22,7 @@ def sort_list(file_list):
 def unite_files(file_list):
     with open("Общий.txt", 'a+') as summary_file:
         for file in file_list:
+            summary_file.write('\n')
             summary_file.write(file[1])
             summary_file.write('\n')
             summary_file.write(str(file[0]))
@@ -29,7 +30,7 @@ def unite_files(file_list):
             with open(file[1], "r", encoding="utf-8") as text_file:
                 for line in text_file:
                     summary_file.write(line)
-                    summary_file.write('\n')
+
     pass
 
 unite_files(sort_list(files))
